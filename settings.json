@@ -1,0 +1,9 @@
+{
+  "workbench.colorTheme": "Visual Studio Dark",
+  "editor.tabSize": 2,
+  "editor.renderWhitespace": "none",
+  "editor.detectIndentation": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.minimap.enabled": false,
+  "editor.suggestSelection": "first"
+}
