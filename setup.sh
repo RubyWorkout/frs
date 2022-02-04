@@ -22,6 +22,7 @@ steps_counter=0
 steps_errors=()
 final_step_index=6
 
+# Reurns colorized step title
 function step_title() {
   echo "${bold}${green}STEP $1: $2...${reset}"
 }
@@ -83,8 +84,8 @@ function step_5() {
   git config --global user.name ${name}
   git config --global credential.helper "store --file ${credentials}"
   git config --global alias.ignore "update-index --skip-worktree"
-	git config --global alias.unignore "update-index --no-skip-worktree"
-	git config --global alias.ignored "!git ls-files -v | grep \"^S\""
+  git config --global alias.unignore "update-index --no-skip-worktree"
+  git config --global alias.ignored "!git ls-files -v | grep \"^S\""
   git config --global core.editor nano
   git config --global core.excludesfile "$HOME/.gitignore_global"
   git config --global pull.rebase false
