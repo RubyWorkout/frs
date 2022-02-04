@@ -27,12 +27,12 @@ function step_title() {
   echo "${bold}${green}STEP $1: $2...${reset}"
 }
 
-# Install ZSH and friends
+# Install git, zsh and friends
 function step_1() {
   cd ~
-  step_title $1 "Installing ZSH, OhMyZsh and Spaceship Promt"
+  step_title $1 "Installing GIT, ZSH, OhMyZsh and Spaceship Promt"
   sudo apt update
-  sudo apt-get install -y git curl wget zsh powerline fonts-powerline software-properties-common apt-transport-https
+  sudo apt-get install -y git git-flow curl wget zsh powerline fonts-powerline software-properties-common apt-transport-https
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
   sudo chsh -s $(which zsh)
   git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
@@ -109,7 +109,7 @@ function print_fails_steps {
   echo "${red}Failed number of step(s): ${joined%,*} ${reset}"
 }
 
-# Step list iterator
+# Steps list iterator
 for s in $(seq 1 $final_step_index)
 do
   ((steps_counter++))
@@ -119,7 +119,7 @@ do
   fi
 done
 
-# Final result message
+# Print out final result message
 if [[ ${#bundler_build_errors[@]} == 0 ]]
   then
   echo "${green}Congrats, your Ruby developer environment is ready${reset} 🚀"
