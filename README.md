@@ -1,6 +1,6 @@
 # FRS - fast Ruby setup
 
-Automation script for spin-up Ruby developer environment. Configure your developer stuff on Linux Ubuntu in minutes 🚀 Focus on development, not on developer tools!
+Automation script for spinning-up Ruby developer environment. Configure your developer stuff on Linux Ubuntu in minutes 🚀 Focus on development, not on developer tools!
 
 ## Features
 
@@ -17,6 +17,10 @@ Automation script for spin-up Ruby developer environment. Configure your develop
 3. GitHub personal access token
 
 ## Using
+
+### Get latest Ubuntu
+
+Download and install latest [Ubuntu Desktop](https://ubuntu.com/download/desktop).
 
 ### Create GitHub personal access token
 
@@ -40,12 +44,17 @@ sudo apt-get install wget
 wget https://raw.githubusercontent.com/RubyWorkout/frs/master/setup.sh
 ```
 
+### Allow executable permissions
+
+```bash
+chmod +x setup.sh
+```
+
 ### Run script
 
 Run Fast Ruby Setup script with your email, name (registered on github), github username and github personal access token as positional arguments:
 
 ```bash
-chmod +x setup.sh
 . ./setup.sh johndoe@example.com "John Doe" git_username git_token
 ```
 
