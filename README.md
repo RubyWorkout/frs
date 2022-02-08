@@ -45,6 +45,7 @@ wget https://raw.githubusercontent.com/RubyWorkout/frs/master/setup.sh
 Run Fast Ruby Setup script with your email, name (registered on github), github username and github personal access token as positional arguments:
 
 ```bash
+chmod +x setup.sh
 . ./setup.sh johndoe@example.com "John Doe" git_username git_token
 ```
 
