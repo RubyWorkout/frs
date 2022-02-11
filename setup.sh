@@ -120,7 +120,7 @@ do
 done
 
 # Print out final result message
-if [[ ${#bundler_build_errors[@]} == 0 ]]
+if [[ ${#steps_errors[@]} == 0 ]]
   then
   echo "${green}Congrats, your Ruby developer environment is ready${reset} 🚀"
   echo "Please reboot your OS for start developing!"
