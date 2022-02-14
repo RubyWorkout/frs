@@ -34,7 +34,7 @@ function step_1() {
   sudo apt update
   sudo apt-get install -y git git-flow curl wget zsh powerline fonts-powerline software-properties-common apt-transport-https
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
-  sudo chsh -s $(which zsh)
+  sudo usermod -s $(which zsh) $(whoami)
   git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
   ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
   sed -i 's/robbyrussell/spaceship/' .zshrc
