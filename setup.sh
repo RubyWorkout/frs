@@ -35,19 +35,21 @@ function step_1() {
   sudo apt-get install -y git git-flow curl wget zsh powerline fonts-powerline software-properties-common apt-transport-https
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
   sudo usermod -s $(which zsh) $(whoami)
-  git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
-  ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+  themes="$HOME/.oh-my-zsh/custom/themes"
+  git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$themes/spaceship-prompt" --depth=1
+  ln -s "$themes/spaceship-prompt/spaceship.zsh-theme" "$themes/spaceship.zsh-theme"
   sed -i 's/robbyrussell/spaceship/' .zshrc
 }
 
 # Install asdf, updates terminals configs
 function step_2() {
   step_title $1 "Installing ASDF extendable version manager"
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.9.0
-  echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc
-  echo ". $HOME/.asdf/completions/asdf.bash" >> ~/.bashrc
+  asdf_path="$HOME/.asdf"
+  git clone https://github.com/asdf-vm/asdf.git ${asdf_path} --branch v0.9.0
+  echo ". $asdf_path/asdf.sh" >> ~/.bashrc
+  echo ". $asdf_path/completions/asdf.bash" >> ~/.bashrc
   source ~/.bashrc
-  echo ". $HOME/.asdf/asdf.sh" >> ~/.zshrc
+  echo ". $asdf_path/asdf.sh" >> ~/.zshrc
 }
 
 # Install asdf ruby plugin, requiered system dependencies, mri ruby 3.1.0, asdf config
