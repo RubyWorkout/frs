@@ -16,6 +16,10 @@ Automation script for spinning-up Ruby developer environment. Configure your dev
 2. `wget` system dependency
 3. GitHub personal access token
 
+## Demo
+
+![Fast Ruby setup on Linux Ubuntu](demo.png)
+
 ## Using
 
 ### Get latest Ubuntu
