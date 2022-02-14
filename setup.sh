@@ -96,7 +96,7 @@ function step_5() {
 # Configure vscode
 function step_6() {
   step_title $1 "Configuring Visual Studio Code"
-  wget https://raw.githubusercontent.com/RubyWorkout/frs/master/settings.json -P ~/.config/Code/User/settings.json
+  wget https://raw.githubusercontent.com/RubyWorkout/frs/master/settings.json -P ~/.config/Code/User
 }
 
 # Step runner
