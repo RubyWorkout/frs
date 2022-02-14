@@ -20,7 +20,7 @@ git_username=$3
 git_token=$4
 steps_counter=0
 steps_errors=()
-final_step_index=6
+final_step_index=7
 
 # Reurns colorized step title
 function step_title() {
@@ -99,6 +99,18 @@ function step_6() {
   wget https://raw.githubusercontent.com/RubyWorkout/frs/master/settings.json -P ~/.config/Code/User
 }
 
+# Add shortcuts to dock
+function step_7() {
+  step_title $1 "Adding favorites to dock"
+  gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Nautilus.desktop', 'snap-store_ubuntu-software.desktop', 'org.gnome.Terminal.desktop', 'code.desktop']"
+}
+
+# Reboot OS
+function inform_reboot {
+  echo "Rebooting your OS..."
+  sudo shutdown -r now
+}
+
 # Step runner
 function run_step() {
   if ! eval "step_$1 $1"; then steps_errors+=($1)
@@ -125,6 +137,6 @@ done
 if [[ ${#steps_errors[@]} == 0 ]]
   then
   echo "${green}Congrats, your Ruby developer environment is ready${reset} 🚀"
-  echo "Please reboot your OS for start developing!"
+  inform_reboot
 else print_fails_steps
 fi
