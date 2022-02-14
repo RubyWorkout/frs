@@ -57,7 +57,7 @@ function step_3() {
   step_title $1 "Installing ASDF Ruby plugin, build system dependencies, MRI Ruby 3.1.0"
   default_gems_config="$HOME/.default-gems"
   echo -n "" > ${default_gems_config}
-  echo $(printf %"s\n" bundler pry gem-ctags) > ${default_gems_config}
+  printf %"s\n" bundler pry gem-ctags > ${default_gems_config}
   asdf_config="$HOME/.asdfrc"
   $(asdf plugin add ruby)
   sudo apt-get install -y make gcc libssl-dev libreadline-dev zlib1g-dev
