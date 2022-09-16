@@ -18,6 +18,7 @@ email=$1
 name=$2
 git_username=$3
 git_token=$4
+target_ruby_version="3.1.2"
 steps_counter=0
 steps_errors=()
 final_step_index=8
@@ -45,40 +46,40 @@ function step_1() {
 function step_2() {
   step_title $1 "Installing ASDF extendable version manager"
   asdf_path="$HOME/.asdf"
-  git clone https://github.com/asdf-vm/asdf.git ${asdf_path} --branch v0.9.0
+  git clone https://github.com/asdf-vm/asdf.git ${asdf_path} --branch v0.10.2
   echo ". $asdf_path/asdf.sh" >> ~/.bashrc
   echo ". $asdf_path/completions/asdf.bash" >> ~/.bashrc
   source ~/.bashrc
   echo ". $asdf_path/asdf.sh" >> ~/.zshrc
 }
 
-# Install asdf ruby plugin, requiered system dependencies, mri ruby 3.1.0, asdf config
+# Install asdf ruby plugin, requiered system dependencies, mri ruby, asdf config
 function step_3() {
-  step_title $1 "Installing ASDF Ruby plugin, build system dependencies, MRI Ruby 3.1.2"
+  step_title $1 "Installing ASDF Ruby plugin, build system dependencies, MRI Ruby $target_ruby_version"
   default_gems_config="$HOME/.default-gems"
   echo -n "" > ${default_gems_config}
   printf %"s\n" bundler pry gem-ctags yard > ${default_gems_config}
   asdf_config="$HOME/.asdfrc"
   $(asdf plugin add ruby)
-  sudo apt-get install -y make gcc libssl-dev libreadline-dev zlib1g-dev
+  sudo apt-get install -y make cmake gcc libssl-dev libreadline-dev zlib1g-dev
   echo -n "" > ${asdf_config}
   echo "legacy_version_file = yes" >> ${asdf_config}
-  $(asdf install ruby 3.1.2)
-  $(asdf global ruby 3.1.2)
+  $(asdf install ruby $target_ruby_version)
+  $(asdf global ruby $target_ruby_version)
 }
 
-# Install Postgres, requiered system dependencies
+# Install Postgres and requiered system dependencies
 function step_4() {
   step_title $1 "Installing Postgres and requiered system dependencies"
-  sudo apt-get install -y postgresql libpq-dev cmake
+  sudo apt-get install -y postgresql libpq-dev
 }
 
 # Install vscode
 function step_5() {
   step_title $1 "Installing Visual Studio Code"
   wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
-  sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
-  sudo apt install code
+  sudo add-apt-repository -y "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+  sudo apt install -y code
 }
 
 # Configure git
