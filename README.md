@@ -7,7 +7,8 @@ Automation script for spinning-up Ruby developer environment. Configure your dev
 * Installs & configures [git](https://git-scm.com), [git-flow](https://github.com/petervanderdoes/gitflow-avh)
 * Installs & configures [ZSH](https://www.zsh.org), [OhMyZsh](https://ohmyz.sh) and [Spaceship Promt](https://spaceship-prompt.sh)
 * Installs & configures [asdf](https://asdf-vm.com), [asdf Ruby plugin](https://github.com/asdf-vm/asdf-ruby)
-* Installs & configures latest [MRI Ruby](https://www.ruby-lang.org/en/downloads/releases) with default gems
+* Installs & configures [MRI Ruby](https://www.ruby-lang.org/en/downloads/releases) 3.1.2 with default gem set
+* Installs [Postgres](https://www.postgresql.org/download/linux/ubuntu) & system deps
 * Installs & configures [Visual Studio Code](https://code.visualstudio.com)
 
 ## Requirements/Preconditions
