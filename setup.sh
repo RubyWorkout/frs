@@ -20,7 +20,7 @@ git_username=$3
 git_token=$4
 steps_counter=0
 steps_errors=()
-final_step_index=7
+final_step_index=8
 
 # Reurns colorized step title
 function step_title() {
@@ -54,21 +54,27 @@ function step_2() {
 
 # Install asdf ruby plugin, requiered system dependencies, mri ruby 3.1.0, asdf config
 function step_3() {
-  step_title $1 "Installing ASDF Ruby plugin, build system dependencies, MRI Ruby 3.1.0"
+  step_title $1 "Installing ASDF Ruby plugin, build system dependencies, MRI Ruby 3.1.2"
   default_gems_config="$HOME/.default-gems"
   echo -n "" > ${default_gems_config}
-  printf %"s\n" bundler pry gem-ctags > ${default_gems_config}
+  printf %"s\n" bundler pry gem-ctags yard > ${default_gems_config}
   asdf_config="$HOME/.asdfrc"
   $(asdf plugin add ruby)
   sudo apt-get install -y make gcc libssl-dev libreadline-dev zlib1g-dev
   echo -n "" > ${asdf_config}
   echo "legacy_version_file = yes" >> ${asdf_config}
-  $(asdf install ruby 3.1.0)
-  $(asdf global ruby latest)
+  $(asdf install ruby 3.1.2)
+  $(asdf global ruby 3.1.2)
+}
+
+# Install Postgres, requiered system dependencies
+function step_4() {
+  step_title $1 "Installing Postgres and requiered system dependencies"
+  sudo apt-get install -y postgresql libpq-dev cmake
 }
 
 # Install vscode
-function step_4() {
+function step_5() {
   step_title $1 "Installing Visual Studio Code"
   wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
   sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
@@ -76,7 +82,7 @@ function step_4() {
 }
 
 # Configure git
-function step_5() {
+function step_6() {
   step_title $1 "Configuring git"
   wget https://raw.githubusercontent.com/RubyWorkout/frs/master/.gitignore_global
   credentials="$HOME/.my-credentials"
@@ -94,13 +100,13 @@ function step_5() {
 }
 
 # Configure vscode
-function step_6() {
+function step_7() {
   step_title $1 "Configuring Visual Studio Code"
   wget https://raw.githubusercontent.com/RubyWorkout/frs/master/settings.json -P ~/.config/Code/User
 }
 
 # Add shortcuts to dock
-function step_7() {
+function step_8() {
   step_title $1 "Adding favorites to dock"
   gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Nautilus.desktop', 'snap-store_ubuntu-software.desktop', 'org.gnome.Terminal.desktop', 'code.desktop']"
 }

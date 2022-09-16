@@ -12,7 +12,7 @@ Automation script for spinning-up Ruby developer environment. Configure your dev
 
 ## Requirements/Preconditions
 
-1. Fresh `Linux Ubuntu 20.04 LTS` / `Linux Ubuntu 21.10`
+1. Fresh `Linux Ubuntu 20.04 LTS` / `Linux Ubuntu 21.10` or higher
 2. `wget` system dependency
 3. GitHub personal access token
 
