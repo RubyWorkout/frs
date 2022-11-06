@@ -10,6 +10,7 @@ Automation script for spinning-up Ruby developer environment. Configure your dev
 * Installs & configures [MRI Ruby](https://www.ruby-lang.org/en/downloads/releases) 3.1.2 with default gem set
 * Installs [Postgres](https://www.postgresql.org/download/linux/ubuntu) & system deps
 * Installs & configures [Visual Studio Code](https://code.visualstudio.com)
+* Addes favorites to Gnome dock panel
 
 ## Requirements/Preconditions
 

@@ -88,7 +88,7 @@ function step_6() {
   wget https://raw.githubusercontent.com/RubyWorkout/frs/master/.gitignore_global
   credentials="$HOME/.my-credentials"
   echo -n "" > ${credentials}
-  echo "https://${git_profile}:${git_token}@github.com" >> ${credentials}
+  echo "https://${git_username}:${git_token}@github.com" >> ${credentials}
   git config --global user.email ${email}
   git config --global user.name ${name}
   git config --global credential.helper "store --file ${credentials}"
@@ -109,7 +109,7 @@ function step_7() {
 # Add shortcuts to dock
 function step_8() {
   step_title $1 "Adding favorites to dock"
-  gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Nautilus.desktop', 'snap-store_ubuntu-software.desktop', 'org.gnome.Terminal.desktop', 'code.desktop']"
+  gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'firefox_firefox.desktop', 'org.gnome.Nautilus.desktop', 'snap-store_ubuntu-software.desktop', 'org.gnome.Terminal.desktop', 'code.desktop']"
 }
 
 # Reboot OS
